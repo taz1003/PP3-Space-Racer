@@ -4,13 +4,27 @@ def instructions():
     """
     Shows the player instructions about the rules and obstacles of the game.
     """
-    print("It's the year 5056. You race against an alien to see who reaches space 25 first!")
+    print("It's the year 5056.\nYou race against an alien, in an attempt to save humanity, to see who reaches space 25 first!")
     print("You take turns & roll 1-6, the number corresponding the spaces you move.")
     print("But beaware! There are space obstacles on some spaces that hinders your progress.")
     print("The obstacles & their hindrances are:")
     print("Asteroid Impact = -1 \nGamma Ray Blast = -3 \nSupernova Pull = -5 \nNeutron Star Collision = Start over!")
-    
 
+def start():
+    """
+    Gives the player a choice to start the game or not
+    """
+    choice = input("Do you wish start the race? (y/n) ").lower()
+    
+    if choice== "n":
+        print("You let the alien take over humanity!")
+        quit()
+    elif choice == "y":
+        print("You chose to race for humanity's sake!")
+    else:
+        print("Invalid choice. Let's try again.")
+        start()
+        
 
 def create_board():
     """
@@ -72,9 +86,10 @@ def check_obstacles(spaceship, board):
     
     print(f"{spaceship.name} is at position {spaceship.position}")
 
+
 def main():
     instructions()
-    input("Do you wish start the race? (y/n) ")
+    start()
     print("Best of luck Racer!")
     create_board()
     
