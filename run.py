@@ -32,7 +32,7 @@ def create_board():
     with None value, except for some spaces that have disaster effects to
     hinder progress in the race.
     """
-    board = [None] * 25
+    board = [None] * 26
     board[4] = "move_back_1"
     board[7] = "move_back_3"
     board[8] = "move_back_5"
@@ -40,7 +40,7 @@ def create_board():
     board[15] = "move_back_5"
     board[18] = "move_back_3"
     board[20] = "move_back_1"
-    board[23] = "start_over"
+    board[21] = "start_over"
 
     return board
 
@@ -58,9 +58,7 @@ class spaceship:
         self.position += steps
         if self.position < 0:
             self.position = 0
-        elif self.position > 25:
-            self.position = 25
-    
+
     def reset(self):
         self.position = 0
 
@@ -88,9 +86,18 @@ def check_obstacles(spaceship, board):
     Checks for the obstacles throughout the board.
     If found, they affect the spaceship.
     """
-    space = board[space.position - 1]
+    # Set maximum position value to the max length of the board which
+    # accounts for the zero-based indexing of the board list.
+    if spaceship.position > len(board) - 1:
+        spaceship.position = len(board) - 1
+    
+    #Set values for spaces
+    if spaceship.position - 1 < len(board):
+        space = board[spaceship.position -1]
+    else:
+        space = None
 
-    if space== "start_over":
+    if space == "start_over":
         print(f"{spaceship.name} is hit with Neutron Star Collision! Start Over!")
         spaceship.reset()
     elif space == "move_back_5":
@@ -136,8 +143,9 @@ def handle_turn(player, alien, board):
     alien(computer) and returns the winner.
     """
     while True:
-        print("Player's turn: ")
-        
+
+        print(f"{player.name} is at space {player.position} VS {alien.name} is at space {alien.position}")
+        print("Player's turn: ") 
         if ask_to_continue() == False:
             print("You forsake humanity!")
             quit()
@@ -148,11 +156,10 @@ def handle_turn(player, alien, board):
             return winner
         
         print("Alien's turn: ")
-        step_counter(player, board)
+        step_counter(alien, board)
         winner = check_winner(player, alien)
         if winner:
             return winner
-
 
 
 def main():
@@ -170,5 +177,5 @@ def main():
     winner = handle_turn(player, alien, board)
     if winner:
         print(f"{winner} wins the space race!")
-    
+      
 main()
