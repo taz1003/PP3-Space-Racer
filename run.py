@@ -4,17 +4,17 @@ def instructions():
     """
     Shows the player instructions about the rules and obstacles of the game.
     """
-    print("It's the year 5056.\nYou race against an alien, in an attempt to save humanity, to see who reaches space 25 first!")
+    print("It's the year 5056.\nYou race against the aliens, in an attempt to save humanity, to see who reaches space 25 first!")
     print("You take turns & roll 1-6, the number corresponding the spaces you move.")
-    print("But beaware! There are space obstacles on some spaces that hinders your progress.")
+    print("But beaware! There are space obstacles on some spaces that hinder your progress.")
     print("The obstacles & their hindrances are:")
-    print("Asteroid Impact = -1 \nGamma Ray Blast = -3 \nSupernova Pull = -5 \nNeutron Star Collision = Start over!")
+    print("Asteroid Impact = -1 \nGamma Ray Blast = -3 \nBlackhole Pull = -5 \nNeutron Star Collision = Start over!")
 
 def start():
     """
     Gives the player a choice to start the game or not
     """
-    choice = input("Do you wish start the race? (y/n) ").lower()
+    choice = input("Do you wish start the race? (y/n): ").lower()
     
     if choice== "n":
         print("You let the alien take over humanity!")
@@ -65,6 +65,25 @@ class spaceship:
         self.position = 0
 
 
+def ask_to_continue():
+    """
+    Asks for yes or no input for game continuation. Anything else typed will
+    raise a ValueError.
+    """
+    while True:
+        try:
+            response = input("Do you wish to continue? (y/n): ").lower()
+            if response == "n":
+                print("You forsake humanity!")
+                return False
+            elif response == "y":
+                return True
+            else:
+                raise ValueError("Invalid input. Please type 'y' or 'n'.")
+        except ValueError as e:
+            print(e)
+
+
 def check_obstacles(spaceship, board):
     """
     Checks for the obstacles throughout the board.
@@ -73,10 +92,10 @@ def check_obstacles(spaceship, board):
     space = board[space.position - 1]
 
     if space== "start_over":
-        print(f"{spaceship.name} is with a Neutron Star Collision! Start Over!")
+        print(f"{spaceship.name} is hit with Neutron Star Collision! Start Over!")
         spaceship.reset()
     elif space == "move_back_5":
-        print(f"{spaceship.name} is hit with Supernova Pull! Move back 5 spaces")
+        print(f"{spaceship.name} is hit with Blackhole Pull! Move back 5 spaces")
         spaceship.move(-5)
     elif space == "move_back_3":
         print(f"{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
@@ -98,6 +117,7 @@ def step_counter(spaceship, board):
     spaceship.move(steps)
     check_obstacles(spaceship, board)
 
+
 def check_winner(player, alien):
     """
     Checks for the side that reaches the max length of the board first.
@@ -109,6 +129,8 @@ def check_winner(player, alien):
         return alien.name
     else:
         return None
+
+
 
 def main():
     instructions()
