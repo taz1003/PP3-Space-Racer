@@ -74,7 +74,6 @@ def ask_to_continue():
         try:
             response = input("Do you wish to continue? (y/n): ").lower()
             if response == "n":
-                print("You forsake humanity!")
                 return False
             elif response == "y":
                 return True
@@ -131,8 +130,35 @@ def check_winner(player, alien):
         return None
 
 
+def handle_turn(player, alien, board):
+    """
+    Handles the turn based functionality between the player and the
+    alien(computer) and returns the winner.
+    """
+    while True:
+        print("Player's turn: ")
+        
+        if ask_to_continue() == False:
+            print("You forsake humanity!")
+            quit()
+        
+        step_counter(player, board)
+        winner = check_winner(player, alien)
+        if winner:
+            return winner
+        
+        print("Alien's turn: ")
+        step_counter(player, board)
+        winner = check_winner(player, alien)
+        if winner:
+            return winner
+
+
 
 def main():
+    """
+    
+    """
     instructions()
     start()
     print("Best of luck Racer!")
