@@ -98,6 +98,17 @@ def step_counter(spaceship, board):
     spaceship.move(steps)
     check_obstacles(spaceship, board)
 
+def check_winner(player, alien):
+    """
+    Checks for the side that reaches the max length of the board first.
+    Returns the winner.
+    """
+    if player.position >= 25:
+        return player.name
+    elif alien.position >= 25:
+        return alien.name
+    else:
+        return None
 
 def main():
     instructions()
