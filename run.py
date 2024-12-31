@@ -56,7 +56,6 @@ class spaceship:
     
     def move(self, steps):
         self.position += steps
-
         if self.position < 0:
             self.position = 0
         elif self.position > 25:
@@ -71,20 +70,33 @@ def check_obstacles(spaceship, board):
     Checks for the obstacles throughout the board.
     If found, they affect the spaceship.
     """
-    if spaceship.position == "start_over":
+    space = board[space.position - 1]
+
+    if space== "start_over":
         print(f"{spaceship.name} is with a Neutron Star Collision! Start Over!")
         spaceship.reset()
-    elif spaceship.position == "move_back_5":
+    elif space == "move_back_5":
         print(f"{spaceship.name} is hit with Supernova Pull! Move back 5 spaces")
         spaceship.move(-5)
-    elif spaceship.position == "move_back_3":
+    elif space == "move_back_3":
         print(f"{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
         spaceship.move(-3)
-    elif spaceship.position == "move_back_1":
+    elif space == "move_back_1":
         print(f"{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
         spaceship.move(-1)
     
     print(f"{spaceship.name} is at position {spaceship.position}")
+
+
+def step_counter(spaceship, board):
+    """
+    Rolls a random number between 1 - 6, moves the spaceship and checks for 
+    obstacles.
+    """
+    steps = random.randint(1, 6)
+    print(f"{spaceship.name} rolled a {steps}")
+    spaceship.move(steps)
+    check_obstacles(spaceship, board)
 
 
 def main():
