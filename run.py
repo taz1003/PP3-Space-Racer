@@ -4,12 +4,12 @@ def instructions():
     """
     Shows the player instructions about the rules and obstacles of the game.
     """
-    print("It's the year 5056. You race against the AI to see who reaches space 25 first!")
+    print("It's the year 5056. You race against an alien to see who reaches space 25 first!")
     print("You take turns & roll 1-6, the number corresponding the spaces you move.")
     print("But beaware! There are space obstacles on some spaces that hinders your progress.")
     print("The obstacles & their hindrances are:")
-    print("Asteroid Impact = -1 \nGamma ray Blast = -3 \nSupernova Pull = -5 \nNeutron Star Collision = Start over!")
-    print("Best of luck Racer!")
+    print("Asteroid Impact = -1 \nGamma Ray Blast = -3 \nSupernova Pull = -5 \nNeutron Star Collision = Start over!")
+    
 
 
 def create_board():
@@ -27,6 +27,7 @@ def create_board():
     board[18] = "move_back_3"
     board[20] = "move_back_1"
     board[23] = "start_over"
+
     return board
 
 
@@ -41,18 +42,41 @@ class spaceship:
     
     def move(self, steps):
         self.position += steps
+
         if self.position < 0:
             self.position = 0
+        elif self.position > 25:
+            self.position = 25
     
     def reset(self):
         self.position = 0
 
 
-def
-
+def check_obstacles(spaceship, board):
+    """
+    Checks for the obstacles throughout the board.
+    If found, they affect the spaceship.
+    """
+    if spaceship.position == "start_over":
+        print(f"{spaceship.name} is with a Neutron Star Collision! Start Over!")
+        spaceship.reset()
+    elif spaceship.position == "move_back_5":
+        print(f"{spaceship.name} is hit with Supernova Pull! Move back 5 spaces")
+        spaceship.move(-5)
+    elif spaceship.position == "move_back_3":
+        print(f"{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
+        spaceship.move(-3)
+    elif spaceship.position == "move_back_1":
+        print(f"{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
+        spaceship.move(-1)
+    
+    print(f"{spaceship.name} is at position {spaceship.position}")
 
 def main():
     instructions()
+    input("Do you wish start the race? (y/n) ")
+    print("Best of luck Racer!")
     create_board()
+    
 
 main()
