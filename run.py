@@ -157,12 +157,18 @@ def handle_turn(player, alien, board):
 
 def main():
     """
-    
+    Runs all the game functions.
     """
     instructions()
     start()
     print("Best of luck Racer!")
-    create_board()
-    
 
+    board = create_board()
+    player = spaceship("Player")
+    alien = spaceship("Alien")
+
+    winner = handle_turn(player, alien, board)
+    if winner:
+        print(f"{winner} wins the space race!")
+    
 main()
