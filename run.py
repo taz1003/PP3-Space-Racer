@@ -4,7 +4,7 @@ def instructions():
     """
     Shows the player instructions about the rules and obstacles of the game.
     """
-    print("It's the year 5056.\nYou race against the aliens, in an attempt to save humanity, to see who reaches space 25 first!")
+    print("It's the year 5056.\nYou race against the aliens, in an attempt to save humanity, to see who reaches from space 1 to space 25 first!")
     print("You take turns & roll 1-6, the number corresponding the spaces you move.")
     print("But beaware! There are space obstacles on some spaces that hinder your progress.")
     print("The obstacles & their hindrances are:")
@@ -86,28 +86,27 @@ def check_obstacles(spaceship, board):
     Checks for the obstacles throughout the board.
     If found, they affect the spaceship.
     """
-    # Set maximum position value to the max length of the board which
-    # accounts for the zero-based indexing of the board list.
+    # Set maximum position value to the max length of the board
     if spaceship.position > len(board) - 1:
-        spaceship.position = len(board) - 1
+        spaceship.position = len(board) - 2
     
-    #Set values for spaces
+    # Set values for spaces
     if spaceship.position - 1 < len(board):
-        space = board[spaceship.position -1]
+        space = board[spaceship.position]
     else:
         space = None
 
     if space == "start_over":
-        print(f"!! {spaceship.name} is hit with Neutron Star Collision! Start Over!")
+        print(f"!!{spaceship.name} is hit with Neutron Star Collision! Start Over!")
         spaceship.reset()
     elif space == "move_back_5":
-        print(f"!! {spaceship.name} is hit with Blackhole Pull! Move back 5 spaces")
+        print(f"!!{spaceship.name} is hit with Blackhole Pull! Move back 5 spaces")
         spaceship.move(-5)
     elif space == "move_back_3":
         print(f"!!{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
         spaceship.move(-3)
     elif space == "move_back_1":
-        print(f"!! {spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
+        print(f"!!{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
         spaceship.move(-1)
     
     print(f"{spaceship.name} is at space {spaceship.position}")
