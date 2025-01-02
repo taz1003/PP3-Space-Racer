@@ -22,7 +22,7 @@ def start():
     """
     Gives the player a choice to start the game or not
     """
-    choice = input("Start the race? Type 'y' to start & 'n' to quit: ").lower()
+    choice = input("Start the race? Type 'y' to start & 'n' to quit: \n").lower()
 
     if choice == "n":
         print("You let the alien take over humanity!")
@@ -81,7 +81,7 @@ def ask_to_continue():
     """
     while True:
         try:
-            response = input("Continue the race? (type y/n): ").lower()
+            response = input("Continue the race? (type y/n): \n").lower()
             if response == "n":
                 return False
             elif response == "y":
