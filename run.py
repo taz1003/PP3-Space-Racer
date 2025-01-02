@@ -62,7 +62,6 @@ class spaceship:
     def __init__(self, name):
         self.name = name
         self.position = 0
-        self.power = 0
 
     def move(self, steps):
         self.position += steps
@@ -122,8 +121,6 @@ def check_obstacles(spaceship, board):
         print(f"!!{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
         spaceship.move(-1)
 
-    print(f"{spaceship.name} is at space {spaceship.position}")
-
 
 def step_counter(spaceship, board):
     """
@@ -155,11 +152,12 @@ def handle_turn(player, alien, board):
     alien(computer) and returns the winner. Turn-based logic ensures
     that only one entity can win per game loop.
     """
+    count = 0
     while True:
-
+        count += 1
         print(f"==> {player.name} is at space {player.position} VS {alien.name} is at space {alien.position}")
 
-        print("Player's turn: ")
+        print(f"🟢 Turn {count}: Player's turn: ")
         # Closes the game
         if ask_to_continue() is False:
             print("You forsake humanity!")
@@ -188,8 +186,8 @@ def main():
 
     # Value input
     board = create_board()
-    player = spaceship("Player")
-    alien = spaceship("Alien")
+    player = spaceship("🚀 Player")
+    alien = spaceship("👾 Alien")
 
     winner = handle_turn(player, alien, board)
     if winner:
