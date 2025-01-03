@@ -5,10 +5,14 @@ Users take on the role of humanity's champion in a high-stakes space race agains
 
 [Here is the live version of my project](https://ultimate-space-racer-9ee32e5b59c8.herokuapp.com/)
 
+![Responsive Mockup](assets/screenshots/ultimate-space-racer.png)
+
 ## How To Play
 There are 30 total spaces in this race starting from space 1.
 - __Objective :__
 The user as the player, has to be the first to reach space 30 while navigating a board filled with hazards that can hinder their progress.
+
+![Start of the Game](assets/screenshots/start-game.png)
 
 - __Turns :__
 The game alternates turns between the player and an alien opponent.
@@ -38,8 +42,15 @@ Turn-based mechanics allow for alternating moves between the player and the alie
 - __Randomized Rolls :__
 The dice rolls are completely random, ensuring each playthrough is unique.
 
+![Dice roll](assets/screenshots/dice-roll.png)
+
+- __Turn Countation :__
+Turn counter keeps track of how many turns has been passed and updates the player accordingly.
+
 - __Obstacle Mechanics :__
 Special hazardous board spaces add an element of unpredictability, making each game suspenseful.
+
+![Obstacles](assets/screenshots/obstacles-two.png)
 
 - __Customizable Turn Continuation :__
 The player can choose to continue or quit the game at any turn.
@@ -47,11 +58,15 @@ The player can choose to continue or quit the game at any turn.
 - __Exciting Win Condition :__
 The game requires a precise dice roll to land exactly on space 30 to win. Even if the dice roll exceeds space 30, the player will remain in the game, adding an extra layer of suspense and excitement.
 
+![Win Condition](assets/screenshots/win-game.png)
+
 - __Clear Feedback :__
 Informative prompts and messages provide clarity about the current state of the game.
 
 - __Error Handling :__
 Built-in error handling and input validation ensures smooth gameplay by validating user inputs and managing unexpected issues, such as invalid commands other than the fixed controls or out-of-range moves.
+
+![Error Validation](assets/screenshots/invalid-input-two.png)
 
 - __Emojis for Immersion :__
 Emojis like 🚀, 👾 and 🟢 are used to represent the spaceships and turns, adding a touch of personality and fun to the game experience
