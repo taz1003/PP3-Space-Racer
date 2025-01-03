@@ -120,7 +120,7 @@ def check_obstacles(spaceship, board):
         print(f"!{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
         spaceship.move(-3)
     elif space == "move_back_1":
-        print(f"!{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
+        print(f"!{spaceship.name} is hit with Asteroid Impact! Move back 1 space")
         spaceship.move(-1)
 
 

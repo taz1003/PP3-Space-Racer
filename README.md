@@ -33,13 +33,13 @@ Certain spaces contain hazards that push the player back or reset the player's p
 ## Features
 ### Existing Features
 - __Interactive Gameplay :__
-Turn-based mechanics allow for alternating moves between the player and the alien.
+Turn-based mechanics allow for alternating moves between the player and the alien. In this way, there can only be one winner, negating the need for any tie mechanics.
 
 - __Randomized Rolls :__
 The dice rolls are completely random, ensuring each playthrough is unique.
 
 - __Obstacle Mechanics :__
-Special board spaces add an element of unpredictability, requiring the player to adapt.
+Special hazardous board spaces add an element of unpredictability, making each game suspenseful.
 
 - __Customizable Turn Continuation :__
 The player can choose to continue or quit the game at any turn.
@@ -62,7 +62,7 @@ Emojis like 🚀, 👾 and 🟢 are used to represent the spaceships and turns, 
 Introduce new hazards like "Wormhole Teleportation" that randomly relocate players.
 
 - __Multiplayer Mode :__
-Allow two human players to compete against each other, inserting their own names instead of the fixed names by me.
+Allow two human players to compete against each other, inserting their own names instead of the fixed names given by me.
 
 - __Power-Ups :__
 Add special spaces where the player can gain advantages, like immunity to hazards for a few turns.
@@ -126,7 +126,7 @@ The steps to deploy are as follows:
 - Link the Heroku app to the GitHub repository
 - Click on manual __Deploy__
 
-## Credids
+## Credits
 - The errors in the __check_obstacles__ function were fixed and some codes were refactored after extensive research on Google, YouTube and my Code Institue lessons
 - The creation of the __handle_turn__ function was inspired by some coding videos from the YouTube channel [Code Coach](https://www.youtube.com/@CodeCoachh/videos)
 
