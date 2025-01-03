@@ -5,18 +5,20 @@ def instructions():
     """
     Shows the player instructions about the rules and obstacles of the game.
     """
-    print("It's the year 5056.\nYou race against the aliens,")
+    print("💥 It's the year 5056.\nYou race against the aliens,")
     print("in an attempt to save humanity,")
     print("to see who reaches from space 1 to space 30 first.")
+    print("---------------------------------------------------")
     print("You take turns & roll 1-6 as in the spaces you move.")
     print("But beaware! There are obstacles on some")
     print("spaces that hinder your progress.")
+    print("---------------------------------------------------")
     print("The obstacles are:")
     print("Asteroid Impact = Go back 1 space")
     print("Gamma Ray Blast = Go back 3 spaces")
     print("Blackhole Pull = Go back 5 spaces")
     print("Neutron Star Collision = Start from space 15")
-
+    print("---------------------------------------------------")
 
 def start():
     """
@@ -80,7 +82,7 @@ def ask_to_continue():
     """
     while True:
         try:
-            response = input("Continue the race? (type y/n): \n").lower()
+            response = input("Continue the race? (type 'y' or 'n'): \n").lower()
             if response == "n":
                 return False
             elif response == "y":
@@ -109,16 +111,16 @@ def check_obstacles(spaceship, board):
 
     # Checks for obstacles
     if space == "start_over":
-        print(f"!!{spaceship.name} is hit with Neutron Star Collision! Start from 15")
+        print(f"!{spaceship.name} is hit with Neutron Star Collision! Start from 15")
         spaceship.start_fifteen()
     elif space == "move_back_5":
-        print(f"!!{spaceship.name} is hit with Blackhole Pull! Move back 5 spaces")
+        print(f"!{spaceship.name} is hit with Blackhole Pull! Move back 5 spaces")
         spaceship.move(-5)
     elif space == "move_back_3":
-        print(f"!!{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
+        print(f"!{spaceship.name} is hit with Gamma Ray Blast! Move back 3 spaces")
         spaceship.move(-3)
     elif space == "move_back_1":
-        print(f"!!{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
+        print(f"!{spaceship.name} is hit with Asteroid Impact! Move back 1 spaces")
         spaceship.move(-1)
 
 
@@ -156,8 +158,8 @@ def handle_turn(player, alien, board):
     while True:
         count += 1
         print(f"==> {player.name} is at space {player.position} VS {alien.name} is at space {alien.position}")
-
-        print(f"🟢 Turn {count}: Player's turn: ")
+        print("---------------------------------------------------")
+        print(f"🟢 Turn {count} - Player's turn: ")
         # Closes the game
         if ask_to_continue() is False:
             print("You forsake humanity!")
